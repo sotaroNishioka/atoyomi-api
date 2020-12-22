@@ -66,7 +66,7 @@ func GetOrigins() string {
 func GetPort() string {
 	var port = os.Getenv("PORT")
 	if port == "" {
-		port = "8000"
+		port = "8080"
 		fmt.Println("INFO: No PORT environment variable detected, defaulting to " + port)
 	}
 	return ":" + port
