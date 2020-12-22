@@ -1,2 +1,3 @@
 /Godeps
-/vendor/*
+/vendor/
+!/vendor/vendor.json
