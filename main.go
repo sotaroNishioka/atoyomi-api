@@ -41,7 +41,7 @@ func getUrlData(w http.ResponseWriter, r *http.Request) {
 }
 
 func getUrl(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, os.Getenv("ORIGIN_ALLOWED"))
+	io.WriteString(w, "Atoyomi API")
 }
 
 func main() {
@@ -49,8 +49,8 @@ func main() {
 	router.HandleFunc("/preview", getUrlData).Methods("POST")
 	router.HandleFunc("/", getUrl).Methods("GET")
 	
-	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With, Content-Type"})
-	originsOk := handlers.AllowedOrigins([]string{"*"})
+	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
+	originsOk := handlers.AllowedOrigins([]string{GetOrigins()})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "POST"})
 
 	http.ListenAndServe(GetPort(), handlers.CORS(originsOk, headersOk, methodsOk)(router))
