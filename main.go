@@ -41,12 +41,13 @@ func getUrlData(w http.ResponseWriter, r *http.Request) {
 }
 
 func getUrl(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "Link-Preview API")
+	io.WriteString(w, "Atoyomi API")
 }
 
 func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/preview", getUrlData).Methods("POST")
+	router.HandleFunc("/", getUrl).Methods("GET")
 	
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
 	originsOk := handlers.AllowedOrigins([]string{GetOrigins()})
