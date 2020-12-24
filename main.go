@@ -59,7 +59,7 @@ func main() {
 func GetOrigins() string {
 	var origin = os.Getenv("ORIGIN_ALLOWED")
 	if origin == "" {
-		origin = "*"
+		origin = "chrome-extension://jicipkdjpamapcfkgimdifkfcgnngbed"
 		fmt.Println("INFO: No ORIGIN_ALLOWED environment variable detected, defaulting to " + origin)
 	}
 	return origin
