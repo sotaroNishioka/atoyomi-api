@@ -41,7 +41,7 @@ func getUrlData(w http.ResponseWriter, r *http.Request) {
 }
 
 func getUrl(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "Atoyomi API")
+	io.WriteString(w, os.Getenv("ORIGIN_ALLOWED"))
 }
 
 func main() {
@@ -49,8 +49,8 @@ func main() {
 	router.HandleFunc("/preview", getUrlData).Methods("POST")
 	router.HandleFunc("/", getUrl).Methods("GET")
 	
-	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
-	originsOk := handlers.AllowedOrigins([]string{GetOrigins()})
+	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With, Content-Type"})
+	originsOk := handlers.AllowedOrigins([]string{"*"})
 	methodsOk := handlers.AllowedMethods([]string{"GET", "POST"})
 
 	http.ListenAndServe(GetPort(), handlers.CORS(originsOk, headersOk, methodsOk)(router))
@@ -59,7 +59,7 @@ func main() {
 func GetOrigins() string {
 	var origin = os.Getenv("ORIGIN_ALLOWED")
 	if origin == "" {
-		origin = "chrome-extension://jicipkdjpamapcfkgimdifkfcgnngbed"
+		origin = "*"
 		fmt.Println("INFO: No ORIGIN_ALLOWED environment variable detected, defaulting to " + origin)
 	}
 	return origin
