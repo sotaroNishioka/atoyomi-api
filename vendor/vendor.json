@@ -3,7 +3,7 @@
 	"ignore": "test",
 	"package": [
 		{
-			"path": "atoyomi-api",
+			"path": "atoyomu-api",
 			"revision": ""
 		},
 		{

@@ -1,4 +1,4 @@
-atoyomi-api
+atoyomu-api
 
-https://atoyomi-api.herokuapp.com/
+https://atoyomu-api.herokuapp.com/
 

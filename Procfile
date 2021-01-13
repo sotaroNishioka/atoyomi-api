@@ -1,1 +1,1 @@
-web: atoyomi-api
+web: atoyomu-api
