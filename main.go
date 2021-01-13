@@ -41,7 +41,7 @@ func getUrlData(w http.ResponseWriter, r *http.Request) {
 }
 
 func getUrl(w http.ResponseWriter, r *http.Request) {
-	io.WriteString(w, "Atoyomi API")
+	io.WriteString(w, "Atoyomu API")
 }
 
 func main() {
